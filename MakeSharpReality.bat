@@ -17,7 +17,12 @@ if "%VSVER%" == "" echo ERROR: VS_VER is not set, example of usage: "MakeSharpRe
 if "%CONFIG%" == "Release" set "LIB_PREFIX="
 if "%VSVER%" == "2015" set "VS_VER=14"
 if "%VSVER%" == "2017" set "VS_VER=15"
-if "%PLATFORM%" == "x64" (set "TARGET=Visual Studio %VS_VER% Win64") else (set "TARGET=Visual Studio %VS_VER%")
+
+set "VS_PLATFORM=%PLATFORM%"
+if "%PLATFORM%" == "x64" set "VS_PLATFORM=Win64"
+if "%PLATFORM%" == "x86" set "VS_PLATFORM="
+
+if "%VS_PLATFORM%" == "" (set TARGET=Visual Studio %VS_VER%) else (set TARGET=Visual Studio %VS_VER% %VS_PLATFORM%)
 
 del Urho3D\Urho3D_SharpReality\CMakeCache.txt 2>NUL
 del /S /Q Urho3D\Urho3D_SharpReality\CMakeFiles

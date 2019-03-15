@@ -111,7 +111,11 @@ namespace Urho.SharpReality
 		[DllImport(Consts.NativeImport, CallingConvention = CallingConvention.Cdecl)]
 		static extern void InitializeSpace();
 
-		public unsafe void Run()
+        [DllImport(Consts.NativeImport, CallingConvention = CallingConvention.Cdecl)]
+        static extern void HoloLens_RefreshCurrentFrame();
+
+
+        public unsafe void Run()
 		{
 			AppStarting?.Invoke();
 			ReferenceFrame = SpatialLocator.GetDefault().CreateStationaryFrameOfReferenceAtCurrentLocation();
@@ -132,6 +136,9 @@ namespace Urho.SharpReality
 					if (Game != null)
 					{
 						CurrentFrame = HolographicSpace.CreateNextFrame();
+                        coreWindow.CustomProperties[nameof(CurrentFrame)] = CurrentFrame;
+                        HoloLens_RefreshCurrentFrame();
+
 						CurrentFrame.UpdateCurrentPrediction();
 						var prediction = CurrentFrame.CurrentPrediction;
 						if (prediction.CameraPoses.Count < 1)

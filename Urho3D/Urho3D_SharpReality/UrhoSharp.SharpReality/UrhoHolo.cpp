@@ -17,12 +17,26 @@ extern "C"
 
 	const wchar_t* SDL_UWP_GetResourceDir()
 	{
-		return Windows::ApplicationModel::Package::Current->InstalledLocation->Path->Data();
+		static std::wstring resourceDir{};
+
+		if (resourceDir.empty())
+		{
+			resourceDir = Windows::ApplicationModel::Package::Current->InstalledLocation->Path->Data();
+		}
+
+		return resourceDir.c_str();
 	}
 
 	const wchar_t* SDL_UWP_GetCacheDir()
 	{
-		return Windows::Storage::ApplicationData::Current->LocalFolder->Path->Data();
+		static std::wstring cacheDir{};
+
+		if (cacheDir.empty())
+		{
+			cacheDir = Windows::Storage::ApplicationData::Current->LocalFolder->Path->Data();
+		}
+
+		return cacheDir.c_str();
 	}
 
 	int SDL_UWP_MoveFile(const wchar_t* src, const wchar_t* dst)
@@ -187,6 +201,12 @@ extern "C"
 		DX::ThrowIfFailed(Windows::Graphics::DirectX::Direct3D11::GetDXGIInterfaceFromObject(surface, IID_PPV_ARGS(&resource)));
 		DX::ThrowIfFailed(resource.As(&cameraBackBuffer));
 		return cameraBackBuffer.Get();
+	}
+
+	__declspec(dllexport) void HoloLens_RefreshCurrentFrame()
+	{
+		auto obj = CoreWindow::GetForCurrentThread()->CustomProperties->Lookup("CurrentFrame");
+		current_frame = safe_cast<HolographicFrame^>(obj);
 	}
 }
 template <typename t = byte>

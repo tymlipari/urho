@@ -2,7 +2,7 @@
   <Target Name="CheckNonStoreApp" Condition="'$(WindowsAppContainer)' != 'true'" BeforeTargets="PrepareForBuild">
     <Error Text="Only Universal Windows Apps are supported." />
   </Target>
-  <Target Name="CheckAnyCPU" Condition="('$(PlatformTarget)' != 'x86') AND ('$(PlatformTarget)' != 'x64') AND ('$(PlatformTarget)' != 'AnyCPU')" BeforeTargets="PrepareForBuild">
+  <Target Name="CheckAnyCPU" Condition="('$(PlatformTarget)' != 'x86') AND ('$(PlatformTarget)' != 'x64') AND ('$(PlatformTarget)' != 'ARM') AND ('$(PlatformTarget)' != 'AnyCPU')" BeforeTargets="PrepareForBuild">
     <Error Text="The $(Platform) target platform is not supported." />
   </Target> 
   <ItemGroup Condition=" '$(Platform)' == 'x86' ">
@@ -13,6 +13,12 @@
   </ItemGroup>
   <ItemGroup Condition=" '$(Platform)' == 'x64' ">
     <Content Include="$(MSBuildThisFileDirectory)\..\..\native\SharpReality64\mono-holourho.dll">
+      <Link>mono-holourho.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'ARM' ">
+    <Content Include="$(MSBuildThisFileDirectory)\..\..\native\SharpRealityARM\mono-holourho.dll">
       <Link>mono-holourho.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
