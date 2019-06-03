@@ -71,6 +71,13 @@
     </EmbeddedResource>
     <Compile Include="..\UWP\UrhoSurface.cs" />
     <Compile Include="..\UWP\UwpUrhoInitializer.cs" />
+
+    <!-- SharpReality -->
+    <Compile Include="..\SharpReality\GestureManager.cs" />
+    <Compile Include="..\SharpReality\SpatialMappingManager.cs" />
+    <Compile Include="..\SharpReality\UrhoAppView.cs" />
+    <Compile Include="..\SharpReality\UrhoAppViewSource.cs" />
+    <Compile Include="..\SharpReality\VoiceManager.cs" />
   </ItemGroup>
 
   <!-- .NET 4.x -->

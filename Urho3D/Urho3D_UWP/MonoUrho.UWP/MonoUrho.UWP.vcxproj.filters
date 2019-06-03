@@ -113,6 +113,7 @@
     <ClCompile Include="..\..\Source\Source\ThirdParty\SDL\src\video\winrt\SDL_winrtpointerinput.cpp" />
     <ClCompile Include="..\..\Source\Source\ThirdParty\SDL\src\video\winrt\SDL_winrtvideo.cpp" />
     <ClCompile Include="UrhoUWP.cpp" />
+    <ClCompile Include="UrhoHolo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Bindings\Native\glue.h" />

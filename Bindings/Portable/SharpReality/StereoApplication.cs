@@ -129,7 +129,7 @@ namespace Urho.SharpReality
 
 			Renderer.NumViewports = 2; //two eyes
 
-#if UWP_HOLO
+#if WINDOWS_UWP
 			var leftViewport = new Viewport(Scene, LeftCamera, null);
 			var rightVp = new Viewport(Scene, RightCamera, null);
 			Renderer.SetViewport(0, leftViewport);
@@ -176,7 +176,7 @@ namespace Urho.SharpReality
 		protected Task<bool> RegisterCortanaCommands(Dictionary<string, Action> commands)
 		{
 			CortanaCommands = commands;
-#if UWP_HOLO
+#if WINDOWS_UWP
 			return Urho.SharpReality.UrhoAppView.Current.VoiceManager.RegisterCortanaCommands(commands);
 #else
 			return Task.FromResult<bool>(false);
@@ -185,7 +185,7 @@ namespace Urho.SharpReality
 
 		public Task TextToSpeech(string text)
 		{
-#if UWP_HOLO
+#if WINDOWS_UWP
 			return Urho.SharpReality.UrhoAppView.Current.VoiceManager.TextToSpeech(text);
 #else
 			return Task.FromResult<bool>(false);
@@ -197,7 +197,7 @@ namespace Urho.SharpReality
 		/// </summary>
 		protected Task<bool> StartSpatialMapping(Vector3 extents, int trianglesPerCubicMeter = 1000, Color color = default(Color), bool onlyAdd = false, bool convertToLeftHanded = true)
 		{
-#if UWP_HOLO
+#if WINDOWS_UWP
 			var appView = Urho.SharpReality.UrhoAppView.Current;
 			appView.SpatialMappingManager.DefaultColor = color;
 			return appView.SpatialMappingManager.Register(this, 
@@ -211,7 +211,7 @@ namespace Urho.SharpReality
 
 		protected void StopSpatialMapping()
 		{
-#if UWP_HOLO
+#if WINDOWS_UWP
 			Urho.SharpReality.UrhoAppView.Current.SpatialMappingManager.Stop();
 #endif
 		}

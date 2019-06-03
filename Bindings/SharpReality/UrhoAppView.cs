@@ -109,10 +109,10 @@ namespace Urho.SharpReality
 		}
 
 		[DllImport(Consts.NativeImport, CallingConvention = CallingConvention.Cdecl)]
-		static extern void InitializeSpace();
+		static extern void InitializeSpace(Windows.Graphics.Holographic.HolographicSpace space);
 
         [DllImport(Consts.NativeImport, CallingConvention = CallingConvention.Cdecl)]
-        static extern void HoloLens_RefreshCurrentFrame();
+        static extern void HoloLens_SetCurrentFrame(Windows.Graphics.Holographic.HolographicFrame currentFrame);
 
 
         public unsafe void Run()
@@ -120,10 +120,7 @@ namespace Urho.SharpReality
 			AppStarting?.Invoke();
 			ReferenceFrame = SpatialLocator.GetDefault().CreateStationaryFrameOfReferenceAtCurrentLocation();
 
-			var coreWindow = CoreWindow.GetForCurrentThread();
-			coreWindow.CustomProperties.Add(nameof(HolographicSpace), HolographicSpace);
-
-			InitializeSpace();
+			InitializeSpace(HolographicSpace);
 			HolographicSpace.CameraAdded += HolographicSpace_CameraAdded;
 			InteractionManager = SpatialInteractionManager.GetForCurrentView();
 			if (InteractionManager != null)
@@ -136,8 +133,7 @@ namespace Urho.SharpReality
 					if (Game != null)
 					{
 						CurrentFrame = HolographicSpace.CreateNextFrame();
-                        coreWindow.CustomProperties[nameof(CurrentFrame)] = CurrentFrame;
-                        HoloLens_RefreshCurrentFrame();
+                        HoloLens_SetCurrentFrame(CurrentFrame);
 
 						CurrentFrame.UpdateCurrentPrediction();
 						var prediction = CurrentFrame.CurrentPrediction;

@@ -29,7 +29,7 @@
      <file src="../docs/Urho.XML" target="lib/netstandard2.0/UrhoSharp.XML" />
 
      <!--Android-->
-     <file src="../Bin/UrhoSharp/monoandroid81/UrhoSharp.dll" target="lib/monoandroid81/UrhoSharp.dll" />
+     <!-- <file src="../Bin/UrhoSharp/monoandroid81/UrhoSharp.dll" target="lib/monoandroid81/UrhoSharp.dll" />
      <file src="../Bin/UrhoSharp/monoandroid81/Urho.Droid.SdlBinding.dll" target="lib/monoandroid81/Urho.Droid.SdlBinding.dll" />
      <file src="../docs/Urho.XML" target="lib/monoandroid81/UrhoSharp.XML" />
 
@@ -37,12 +37,12 @@
      <file src="../Bin/Android/arm64-v8a/libmono-urho.so" target="native/Android/arm64-v8a/libmono-urho.so" />
      <file src="../Bin/Android/x86/libmono-urho.so" target="native/Android/x86/libmono-urho.so" />
      <file src="../Bin/Android/armeabi-v7a/libmono-urho.so" target="native/Android/armeabi-v7a/libmono-urho.so" />
-     <file src="../Bin/Android/armeabi/libmono-urho.so" target="native/Android/armeabi/libmono-urho.so" />
+     <file src="../Bin/Android/armeabi/libmono-urho.so" target="native/Android/armeabi/libmono-urho.so" /> -->
 
      <!--iOS-->
-     <file src="../Nuget/iOS/UrhoSharp.targets" target="build/xamarin.ios10" />
+     <!-- <file src="../Nuget/iOS/UrhoSharp.targets" target="build/xamarin.ios10" />
      <file src="../Bin/UrhoSharp/UrhoSharp.dll" target="lib/Xamarin.iOS10/UrhoSharp.dll" />
-     <file src="../docs/Urho.XML" target="lib/Xamarin.iOS10/UrhoSharp.XML" />
+     <file src="../docs/Urho.XML" target="lib/Xamarin.iOS10/UrhoSharp.XML" /> -->
 
      <!--Windows+Mac-->
      <file src="../Nuget/Desktop/UrhoSharp.targets" target="build/net45" />
@@ -53,7 +53,7 @@
      <file src="../Bin/Desktop/Win64_DirectX/mono-urho.dll" target="native/Win64_DirectX/mono-urho.dll" />
      <file src="../Bin/Desktop/Win32_DirectX/mono-urho.dll" target="native/Win32_DirectX/mono-urho.dll" />
      <!--file src="../Bin/Desktop/Linux/libmono-urho.so" target="native/Linux/libmono-urho.so" /-->
-     <file src="../Bin/Desktop/libmono-urho.dylib" target="native/Mac/libmono-urho.dylib" />
+     <!-- <file src="../Bin/Desktop/libmono-urho.dylib" target="native/Mac/libmono-urho.dylib" /> -->
 
      <!--.NET Core 2.1-->
      <file src="../Nuget/Desktop/UrhoSharp.targets" target="build/netcoreapp2.1" />
@@ -64,7 +64,8 @@
      <file src="../Nuget/UWP/UrhoSharp.targets" target="build/uap10.0.16299" />
      <file src="../docs/Urho.XML" target="lib/uap10.0.16299/UrhoSharp.XML" />
      <file src="../Bin/UrhoSharp/uap10.0.16299/UrhoSharp.dll" target="lib/uap10.0.16299/UrhoSharp.dll" />
-     <file src="../Bin/UWP/Win32/UrhoSharp.UWP/mono-urho.dll" target="runtimes\win10-x86\native\mono-urho.dll" />
+     <file src="../Bin/UWP/x86/UrhoSharp.UWP/mono-urho.dll" target="runtimes\win10-x86\native\mono-urho.dll" />
      <file src="../Bin/UWP/x64/UrhoSharp.UWP/mono-urho.dll" target="runtimes\win10-x64\native\mono-urho.dll" />
+     <file src="../Bin/UWP/ARM/UrhoSharp.UWP/mono-urho.dll" target="runtimes\win10-arm\native\mono-urho.dll" />
    </files>
 </package>
